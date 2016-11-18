@@ -1,8 +1,13 @@
+// props.videos = [fakeData,.....]
+// props.onClickVideo = func -> changes the state of App
+
 var VideoList = (props) => (
   <div className="video-list media">
 
     {props.videos.map( video => 
-      <VideoListEntry video={video} />
+      <VideoListEntry video={video} 
+                      onClickVideo={ (props.onClickVideo) }
+      />
     )}
 
   </div>

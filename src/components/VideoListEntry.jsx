@@ -1,19 +1,28 @@
-// varialbe
-// var videoTitle = exampleVideoData[0].snippet.title;
-// var description = exampleVideoData[0].snippet.description;
-// var imageUrl = exampleVideoData[0].snippet.thumbnails.default.url;
+// props.video = fakeMovieData
+// props.onClickVideo = func -> changes the state of App
 
-var VideoListEntry = (props) => (
-  <div className="video-list-entry">
-    <div className="media-left media-middle">
-      <img className="media-object" src={(props.video).snippet.thumbnails.default.url} alt="" />
+var VideoListEntry = (props) => {
+
+  var imageUrl = (props.video).snippet.thumbnails.default.url;
+  var title = (props.video).snippet.title;
+  var description = (props.video).snippet.description;
+//  console.log('test');
+        // <div className="video-list-entry-title" onClick={props.onClickVideo( props.video )}>
+
+  return (
+    <div className="video-list-entry">
+      <div className="media-left media-middle">
+        <img className="media-object" src={imageUrl} alt="" />
+      </div>
+      <div className="media-body">
+        <div className="video-list-entry-title" onClick={ () => props.onClickVideo( props.video )  }>
+          {title}
+        </div>
+        <div className="video-list-entry-detail">{description}</div>
+      </div>
     </div>
-    <div className="media-body">
-      <div className="video-list-entry-title">{(props.video).snippet.title}</div>
-      <div className="video-list-entry-detail">{(props.video).snippet.description}</div>
-    </div>
-  </div>
-);
+  );
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
